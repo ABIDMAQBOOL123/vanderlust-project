@@ -31,8 +31,8 @@ const userRouter = require("./routes/user.js")
 
 
 
-// const dbUrl = process.env.ATLASDB_URL
-const db = 'mongodb://localhost:27017';
+const dbUrl = process.env.ATLASDB_URL
+// const db = 'mongodb://localhost:27017';
 
 
 
@@ -57,7 +57,7 @@ app.use(express.static(path.join(__dirname,"/public")));
 
 
 const store = MongoStore.create({
-    mongoUrl: db,
+    mongoUrl:  dbUrl,
     crypto:{
      secret: process.env.SECRET,
     },
@@ -79,10 +79,7 @@ const sessionOptions = {
     }
 }
 
-// app.get("/", (req,res)=>{
 
-//     res.send("hi i am root");
-// });
 
 
 
@@ -139,18 +136,7 @@ app.use("/", userRouter);
 
 
 
-// app.get("/testListing", async (req,res)=>{
-// let sampleListing = new Listing({
-//     title:"my new villa",
-//     description:"by the beach",
-//     price:1200,
-//     location:"calangute, goa",
-//     country:"india,"
-// });
 
-// await sampleListing.save()
-// console.log("sample was saved")
-// res.send("successful testing ");
 
 app.all("*",(req, res, next) =>{
     next(new ExpressError(404, "page not found"))
