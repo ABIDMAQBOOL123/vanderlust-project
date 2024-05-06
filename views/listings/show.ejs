@@ -1,4 +1,5 @@
 <% layout('/layouts/boilerplate')%>
+
 <div class="row mt-3">
   <div class="col-8 offset-2">
     <h3><%=listing.title%></h3>
@@ -23,12 +24,12 @@
   
   <% if(currUser && listing.Owner._id.equals(currUser._id)) { %>
   <div class="btns">
-    <a href="/listings/<%=listing.id%>/edit" class="btn btn-dark col-1 offset-2"
+    <a href="/listings/<%=listing.id%>/edit" class="btn btn-dark col-1 offset-3"
       >Edit</a>
     
 
     <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE ">
-      <button  class="btn btn-dark delete-btn ">Delete</button>
+      <button  class="btn btn-dark delete-btn  offset-4">Delete</button>
     </form>
   </div>
  <% } %>
@@ -117,3 +118,5 @@
     </div>
   </div>
 </div>
+
+

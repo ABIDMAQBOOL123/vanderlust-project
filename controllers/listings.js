@@ -70,6 +70,28 @@ module.exports.updateListing = async(req,res) =>{
     console.log(deletedListing);
     req.flash("success", "listing deleted!")
       res.redirect("/listings");
-}
+
+
+    }
+
+
+    module.exports.searchListing = async (req, res) => {
+      // Get the country name from the query parameters
+      const countryName = req.query.country;
+  
+      // If country name is provided, find listings based on the country
+      if (countryName) {
+          const listings = await Listing.find({ country: countryName });
+          res.redirect("listings", { listings });
+      } else {
+          // Otherwise, show all listings
+          const listings = await Listing.find({});
+          res.redirect("listings", { listings });
+      }
+  };
+
+
+
+
 
 

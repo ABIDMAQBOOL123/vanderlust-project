@@ -31,7 +31,9 @@ const userRouter = require("./routes/user.js")
 
 
 
-const dbUrl = process.env.ATLASDB_URL
+// const dbUrl = process.env.ATLASDB_URL
+const db = 'mongodb://localhost:27017';
+
 
 
 main().then(()=>{
@@ -42,7 +44,7 @@ main().then(()=>{
 })
 
 async function main(){
-    await mongoose.connect(dbUrl)
+    await mongoose.connect(db)
 }
 
 
@@ -55,7 +57,7 @@ app.use(express.static(path.join(__dirname,"/public")));
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl: db,
     crypto:{
      secret: process.env.SECRET,
     },
@@ -110,6 +112,8 @@ app.get("/demoUser", async(req, res)=>{
    let registeredUser = await User.register(fakeUser, "helloworld");
    res.send(registeredUser);
 })
+
+
 
 
 

@@ -110,12 +110,46 @@
 }
 .btns{
     display: flex;
-    margin-left: 5.8rem;
+    
+    
 }
 
-.delete-btn{
-    margin-left: 1rem;
-}
+
+
+
+@media(max-width: 767px) {
+    .navbar {
+        height: auto;
+    }
+
+    .fa-compass {
+        font-size: 1.5rem;
+    }
+
+    .btns {
+        flex-direction: column;
+        margin-left: 0
+        
+    }
+  .d-flex{
+    display: flex;
+    width: auto;
+    
+    
+
+
+  }
+   .d-flex .search-input{
+ font-size: 0.5em;
+  }
+
+
+    }
+    
+
+
+   
+
 
 
 

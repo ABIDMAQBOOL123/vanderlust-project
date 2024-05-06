@@ -195,3 +195,35 @@
     -webkit-transition: background-position .7s;
     transition: background-position .7s;
   }
+
+
+  @media(max-width: 767px) {
+    .row{
+      display: flex;
+      width: auto;
+    }
+    
+      
+      
+    .starability-slot{
+      font-size: 0.7px;
+    }
+    .card-body{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .starability-result card-text{
+     width: 60px;
+     margin: 0;
+    }
+    .card-title{
+      font-size: 10px;
+    }
+    .btn bsmtn- btn-dark{
+      font-size: 7px;
+    }
+    }
+  
+
+
+

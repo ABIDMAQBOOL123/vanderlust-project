@@ -14,6 +14,7 @@ const upload = multer({storage})
 router.route("/")
 .get(wrapAsync(listingController.index)
 )
+.get(wrapAsync(listingController.searchListing))
 .post(
 isLoggedIn,
   upload.single('listing[image]'),
@@ -54,6 +55,9 @@ isLoggedIn ,
 isOwner,
  wrapAsync(listingController.renderEditForm)
 )
+
+
+
 
 
 
