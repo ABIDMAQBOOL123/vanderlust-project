@@ -26,7 +26,7 @@ const userRouter = require("./routes/user.js");
 const dbUrl = process.env.ATLASDB_URL;
 
 
-// console.log("Database URL:", dbUrl);
+console.log("Database URL:", dbUrl);
 
 if (!dbUrl) {
     console.error("ERROR: Database URL is undefined. Check your .env file or environment variables.");
