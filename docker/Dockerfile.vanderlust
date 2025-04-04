@@ -1,0 +1,21 @@
+# Use Node.js base image
+FROM node:20
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy the entire app
+COPY . .
+
+# Expose the port your app runs on
+EXPOSE 8080
+
+# Set environment to production
+ENV NODE_ENV=production
+
+# Start the app
+CMD ["node", "app.js"]
