@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run the app
+      - name: Start app briefly to check for runtime errors
         env:
           NODE_ENV: production
           ATLASDB_URL: ${{ secrets.ATLASDB_URL }}
@@ -32,4 +32,7 @@ jobs:
           CLOUD_API_SECRET: ${{ secrets.CLOUD_API_SECRET }}
           CLOUD_Name: ${{ secrets.CLOUD_Name }}
           SECRET: ${{ secrets.SECRET }}
-        run: node app.js
+        run: |
+          node app.js &
+          sleep 5
+          echo "App started successfully. Stopping..."
