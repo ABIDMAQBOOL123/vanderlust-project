@@ -1,25 +1,35 @@
-name: Node.js CI for Mega Project
+name: Build and Run Node App
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
-      - main # or "master", based on your branch name
+      - main
 
 jobs:
-  run-server:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20.9.0"
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install
 
-      - name: Start server
+      - name: Run the app
+        env:
+          NODE_ENV: production
+          ATLASDB_URL: ${{ secrets.ATLASDB_URL }}
+          CLOUD_API_KEY: ${{ secrets.CLOUD_API_KEY }}
+          CLOUD_API_SECRET: ${{ secrets.CLOUD_API_SECRET }}
+          CLOUD_Name: ${{ secrets.CLOUD_Name }}
+          SECRET: ${{ secrets.SECRET }}
         run: node app.js
