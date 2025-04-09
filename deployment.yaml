@@ -1,0 +1,31 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vanderlust-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vanderlust
+  template:
+    metadata:
+      labels:
+        app: vanderlust
+    spec:
+      containers:
+        - name: vanderlust
+          image: abidmaqbool123/vanderlust-project:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ATLASDB_URL
+              value: "mongodb+srv://abidmaqbool26:1qNM32eKBZ2QarUH@cluster0.natf3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+            - name: CLOUD_API_KEY
+              value: "768595873175467"
+            - name: CLOUD_API_SECRET
+              value: "KstGhuUAWHwZmunxSTH21WRR9_U"
+            - name: CLOUD_Name
+              value: "gfvvbvmhgfgc"
+            - name: SECRET
+              value: "bgnhtrcd"
