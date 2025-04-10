@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vanderlust-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vanderlust
+  template:
+    metadata:
+      labels:
+        app: vanderlust
+    spec:
+      containers:
+        - name: vanderlust
+          image: abidmaqbool123/vanderlust
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ATLASDB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: vanderlust-secret
+                  key: ATLASDB_URL
+            - name: CLOUD_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: vanderlust-secret
+                  key: CLOUD_API_KEY
+            - name: CLOUD_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: vanderlust-secret
+                  key: CLOUD_API_SECRET
+            - name: CLOUD_Name
+              valueFrom:
+                configMapKeyRef:
+                  name: vanderlust-config
+                  key: CLOUD_Name
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: vanderlust-secret
+                  key: SECRET
